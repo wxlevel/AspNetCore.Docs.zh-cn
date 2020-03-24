@@ -36,13 +36,13 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 前面的示例适用于 [Razor Pages](xref:razor-pages/index)；MVC 版本类似。
 
 
-在构建应用[主机](xref:fundamentals/index#host)时指定 `Startup` 类。 通常通过在主机生成器上调用 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 方法来指定 `Startup` 类：
+在构建应用[Host](xref:fundamentals/index#host)时指定 `Startup` 类。 通常通过在Host生成器上调用 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 方法来指定 `Startup` 类：
 
 [!code-csharp[](startup/3.0_samples/Program3.cs?name=snippet_Program&highlight=12)]
 
-主机提供 `Startup` 类构造函数可用的某些服务。 应用通过 `ConfigureServices` 添加其他服务。 主机和应用服务都可以在 `Configure` 和整个应用中使用。
+Host提供 `Startup` 类构造函数可用的某些服务。 应用通过 `ConfigureServices` 添加其他服务。 Host和应用服务都可以在 `Configure` 和整个应用中使用。
 
-使用[泛型主机](xref:fundamentals/host/generic-host) (<xref:Microsoft.Extensions.Hosting.IHostBuilder>) 时，只能将以下服务类型注入 `Startup` 构造函数：
+使用[泛型Host](xref:fundamentals/host/generic-host) (<xref:Microsoft.Extensions.Hosting.IHostBuilder>) 时，只能将以下服务类型注入 `Startup` 构造函数：
 
 * <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment>
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
@@ -56,17 +56,17 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 应用为不同的环境（例如，`StartupDevelopment`）单独定义 `Startup` 类时，相应的 `Startup` 类会在运行时被选中。 优先考虑名称后缀与当前环境相匹配的类。 如果应用在开发环境中运行并包含 `Startup` 类和 `StartupDevelopment` 类，则使用 `StartupDevelopment` 类。 有关详细信息，请参阅[使用多个环境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 
-请参阅[主机](xref:fundamentals/index#host)，了解有关主机的详细信息。 有关在启动过程中处理错误的信息，请参阅[启动异常处理](xref:fundamentals/error-handling#startup-exception-handling)。
+请参阅[Host](xref:fundamentals/index#host)，了解有关Host的详细信息。 有关在启动过程中处理错误的信息，请参阅[启动异常处理](xref:fundamentals/error-handling#startup-exception-handling)。
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法：
 
 * 可选。
-* 在 `Configure` 方法配置应用服务之前，由主机调用。
+* 在 `Configure` 方法配置应用服务之前，由Host调用。
 * 其中按常规设置[配置选项](xref:fundamentals/configuration/index)。
 
-主机可能会在调用 `Startup` 方法之前配置某些服务。 有关详细信息，请参阅[主机](xref:fundamentals/index#host)。
+Host可能会在调用 `Startup` 方法之前配置某些服务。 有关详细信息，请参阅[Host](xref:fundamentals/index#host)。
 
 对于需要大量设置的功能，<xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上有 `Add{Service}` 扩展方法。 例如，**Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
 
@@ -104,7 +104,7 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 ## <a name="configure-services-without-startup"></a>在不启动的情况下配置服务
 
-若要配置服务和请求处理管道，而不使用 `Startup` 类，请在主机生成器上调用 `ConfigureServices` 和 `Configure` 便捷方法。 多次调用 `ConfigureServices` 将追加到另一个。 如果存在多个 `Configure` 方法调用，则使用最后一个 `Configure` 调用。
+若要配置服务和请求处理管道，而不使用 `Startup` 类，请在Host生成器上调用 `ConfigureServices` 和 `Configure` 便捷方法。 多次调用 `ConfigureServices` 将追加到另一个。 如果存在多个 `Configure` 方法调用，则使用最后一个 `Configure` 调用。
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Program1.cs?name=snippet)]
 
@@ -147,7 +147,7 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 ## <a name="additional-resources"></a>其他资源
 
-* [主机](xref:fundamentals/index#host)
+* [Host](xref:fundamentals/index#host)
 * <xref:fundamentals/environments>
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>
@@ -168,11 +168,11 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs)]
 
-在构建应用[主机](xref:fundamentals/index#host)时指定 `Startup` 类。 通常通过在主机生成器上调用 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 方法来指定 `Startup` 类：
+在构建应用[Host](xref:fundamentals/index#host)时指定 `Startup` 类。 通常通过在Host生成器上调用 [WebHostBuilderExtensions.UseStartup\<TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) 方法来指定 `Startup` 类：
 
 [!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=12)]
 
-主机提供 `Startup` 类构造函数可用的某些服务。 应用通过 `ConfigureServices` 添加其他服务。 然后，主机和应用服务都可以在 `Configure` 和整个应用中使用。
+Host提供 `Startup` 类构造函数可用的某些服务。 应用通过 `ConfigureServices` 添加其他服务。 然后，Host和应用服务都可以在 `Configure` 和整个应用中使用。
 
 在 `Startup` 类中[注入依赖关系](xref:fundamentals/dependency-injection)的常见用途为注入：
 
@@ -188,17 +188,17 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 应用为不同的环境（例如，`StartupDevelopment`）单独定义 `Startup` 类时，相应的 `Startup` 类会在运行时被选中。 优先考虑名称后缀与当前环境相匹配的类。 如果应用在开发环境中运行并包含 `Startup` 类和 `StartupDevelopment` 类，则使用 `StartupDevelopment` 类。 有关详细信息，请参阅[使用多个环境](xref:fundamentals/environments#environment-based-startup-class-and-methods)。
 
-请参阅[主机](xref:fundamentals/index#host)，了解有关主机的详细信息。 有关在启动过程中处理错误的信息，请参阅[启动异常处理](xref:fundamentals/error-handling#startup-exception-handling)。
+请参阅[Host](xref:fundamentals/index#host)，了解有关Host的详细信息。 有关在启动过程中处理错误的信息，请参阅[启动异常处理](xref:fundamentals/error-handling#startup-exception-handling)。
 
 ## <a name="the-configureservices-method"></a>ConfigureServices 方法
 
 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法：
 
 * 可选。
-* 在 `Configure` 方法配置应用服务之前，由主机调用。
+* 在 `Configure` 方法配置应用服务之前，由Host调用。
 * 其中按常规设置[配置选项](xref:fundamentals/configuration/index)。
 
-主机可能会在调用 `Startup` 方法之前配置某些服务。 有关详细信息，请参阅[主机](xref:fundamentals/index#host)。
+Host可能会在调用 `Startup` 方法之前配置某些服务。 有关详细信息，请参阅[Host](xref:fundamentals/index#host)。
 
 对于需要大量设置的功能，<xref:Microsoft.Extensions.DependencyInjection.IServiceCollection> 上有 `Add{Service}` 扩展方法。 例如，**Add**DbContext、**Add**DefaultIdentity、**Add**EntityFrameworkStores 和 **Add**RazorPages：
 
@@ -236,7 +236,7 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 ## <a name="configure-services-without-startup"></a>在不启动的情况下配置服务
 
-若要配置服务和请求处理管道，而不使用 `Startup` 类，请在主机生成器上调用 `ConfigureServices` 和 `Configure` 便捷方法。 多次调用 `ConfigureServices` 将追加到另一个。 如果存在多个 `Configure` 方法调用，则使用最后一个 `Configure` 调用。
+若要配置服务和请求处理管道，而不使用 `Startup` 类，请在Host生成器上调用 `ConfigureServices` 和 `Configure` 便捷方法。 多次调用 `ConfigureServices` 将追加到另一个。 如果存在多个 `Configure` 方法调用，则使用最后一个 `Configure` 调用。
 
 [!code-csharp[](startup/sample_snapshot/Program1.cs?highlight=16,20)]
 
@@ -279,7 +279,7 @@ ASP.NET Core 应用使用 `Startup` 类，按照约定命名为 `Startup`。 `St
 
 ## <a name="additional-resources"></a>其他资源
 
-* [主机](xref:fundamentals/index#host)
+* [Host](xref:fundamentals/index#host)
 * <xref:fundamentals/environments>
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>
